@@ -1,4 +1,4 @@
-package com.udacity.stockhawk.ui;
+package com.udacity.stockhawk.data;
 
 /**
  * Created by yehia on 10/03/17.
