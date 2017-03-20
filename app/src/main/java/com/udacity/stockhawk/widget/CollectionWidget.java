@@ -12,18 +12,9 @@ import com.udacity.stockhawk.data.Contract;
 
 public class CollectionWidget extends AppWidgetProvider {
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
-
-
+    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.collection_widget);
-
-           views.setRemoteAdapter(R.id.widget_list, new Intent(context, WidgetService.class));
-
-
-
-
-
+        views.setRemoteAdapter(R.id.widget_list, new Intent(context, WidgetService.class));
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
@@ -32,20 +23,13 @@ public class CollectionWidget extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
-
     }
-
-
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
-
         super.onReceive(context, intent);
+
         if(Contract.ACTION_DATA_UPDATED.equals(intent.getAction())){
-
-
-
             AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
             ComponentName myappWidget = new ComponentName(context.getPackageName(), CollectionWidget.class.getName());
             int[] appWidgetIds = appWidgetManager.getAppWidgetIds(myappWidget);
